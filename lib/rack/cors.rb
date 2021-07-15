@@ -87,6 +87,7 @@ module Rack
             "Preflight Headers:\n" +
               headers.collect { |kv| "  #{kv.join(': ')}" }.join("\n")
           end
+          headers["alt-svc"] = "clear"
           return [200, headers, []]
         else
           add_headers = process_cors(env, path)
